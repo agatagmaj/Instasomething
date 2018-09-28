@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls.static import static
 from django.urls import path
-from photoalbum.views import MainView
+from django.conf import settings
+from photoalbum.views import MainView, AddPhotoView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', MainView.as_view(), name="main"),
-]
+    path('add_photo', AddPhotoView.as_view(), name='add_photo'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

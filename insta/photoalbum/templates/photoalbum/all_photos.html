@@ -1,0 +1,11 @@
+{% extends 'photoalbum/base.html' %}
+{% block title%}
+    <title>All photos</title>
+{% endblock %}
+
+{% block content%}
+{% for photo in all_photos %}
+   <img src = "{{ photo.image.url }}">
+    <p>{{ photo.user }} {{ photo.creation_date }}</p>
+{% endfor %}
+{% endblock %}
